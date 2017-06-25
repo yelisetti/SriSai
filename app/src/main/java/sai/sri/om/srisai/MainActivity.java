@@ -10,6 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import sai.sri.om.srisai.madhyana.ENMadhyanaFragment;
+import sai.sri.om.srisai.dhoop.ENDhoopFragment;
+import sai.sri.om.srisai.kakad.ENKakadFragment;
+import sai.sri.om.srisai.shej.ENShejFragment;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -76,19 +81,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_first_layout) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,
-                            new KakadFragment()).commit();
+                            new ENKakadFragment()).commit();
         } else if (id == R.id.nav_second_layout) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,
-                            new DhoopFragment()).commit();
+                            new ENDhoopFragment()).commit();
         } else if (id == R.id.nav_third_layout) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,
-                            new MadhyanaFragment()).commit();
+                            new ENMadhyanaFragment()).commit();
         } else if (id == R.id.nav_fourth_layout) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,
-                            new ShejFragment()).commit();
+                            new ENShejFragment()).commit();
         }else {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,

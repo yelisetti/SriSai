@@ -1,4 +1,4 @@
-package sai.sri.om.srisai;
+package sai.sri.om.srisai.kakad;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -9,25 +9,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import sai.sri.om.srisai.R;
+
 /**
  * Created by vishalyelisetti on 2/19/17.
  */
 
-public class KakadFragment extends Fragment implements View.OnClickListener{
+public class ENKakadFragment extends Fragment implements View.OnClickListener{
 
     View myView;
 
-    public KakadFragment() {
+    public ENKakadFragment() {
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.kakad, container, false);
+        myView = inflater.inflate(R.layout.en_kakad, container, false);
 
-        Button kakaden = (Button) myView.findViewById(R.id.button4);
-        Button kakadhi = (Button) myView.findViewById(R.id.button5);
-        Button kakadtu = (Button) myView.findViewById(R.id.button6);
+        Button kakaden = (Button) myView.findViewById(R.id.english);
+        Button kakadhi = (Button) myView.findViewById(R.id.hindi);
+        Button kakadtu = (Button) myView.findViewById(R.id.telugu);
 
         kakaden.setOnClickListener(this);
         kakadhi.setOnClickListener(this);
@@ -40,15 +42,18 @@ public class KakadFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         Fragment fragment = null;
         switch (v.getId()) {
-            case R.id.button4:
-                fragment = new KakadFragment();
+            case R.id.english:
+                fragment = new ENKakadFragment();
                 replaceFragment(fragment);
                 break;
-
-            case R.id.button5:
-                fragment = new DhoopFragment();
+            case R.id.hindi:
+                fragment = new HIKakadFragment();
                 replaceFragment(fragment);
                 break;
+            case R.id.telugu:
+                fragment = new TEKakadFragment();
+                replaceFragment(fragment);
+                      break;
         }
     }
 

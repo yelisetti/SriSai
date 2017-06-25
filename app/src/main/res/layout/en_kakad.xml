@@ -10,32 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_horizontal">
-        <Button
-            android:text="Button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button4" />
-
-        <Button
-            android:text="Button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button5"
-            android:layout_toRightOf="@+id/button4"
-            />
-
-        <Button
-            android:text="Button6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button6"
-            android:layout_toRightOf="@+id/button5"/>
-        </RelativeLayout>
+        <include layout="@layout/picklanguage" />
 
         <TextView
             android:id="@+id/textView"
