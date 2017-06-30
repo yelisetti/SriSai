@@ -873,7 +873,7 @@ Sainatha maharaja ki Jai.</string>
 Minneapolis MN 55418\n
 
 Mail:  PO BOX 18067, Minneapolis MN 55418</string>
-    <string name="phone">Phone: 6127897729</string>
+    <string name="phone">Phone: <a href="6127897729">6127897729</a></string>
     <string name="email">Email: sai@saibabamn.org</string>
     <string name="hours">
         <b>Week Days</b>\n

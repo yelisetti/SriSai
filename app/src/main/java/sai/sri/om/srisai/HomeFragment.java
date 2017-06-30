@@ -1,15 +1,18 @@
 package sai.sri.om.srisai;
 
-import android.app.Dialog;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Yelisetti on 5/20/17.
@@ -19,44 +22,108 @@ public class HomeFragment extends Fragment {
 
     View myView;
 
-    private Button button;
+    ExpandableListAdapter listAdapter;
+    ExpandableListView expListView;
+    List<String> listDataHeader;
+    HashMap<String, List<String>> listDataChild;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.home, container, false);
 
-        TextView mLink = (TextView) myView.findViewById(R.id.addresslink);
-        if (mLink != null) {
-            mLink.setMovementMethod(LinkMovementMethod.getInstance());
-        }
+        // get the listview
+        expListView = (ExpandableListView) myView.findViewById(R.id.lvExp);
 
+        // preparing list data
+        prepareListData();
 
-        button = (Button) myView.findViewById(R.id.schedule);
+        listAdapter = new ExpandableListViewAdapter(getActivity().getApplicationContext(), listDataHeader, listDataChild);
 
-        // add button listener
-        button.setOnClickListener(new View.OnClickListener() {
+        // setting list adapter
+        expListView.setAdapter(listAdapter);
+
+        // Listview Group click listener
+        expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
 
             @Override
-            public void onClick(View arg0) {
-
-                // custom dialog
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.schedule);
-
-                Button dialogButton = (Button) dialog.findViewById(R.id.ok_button);
-                // if button is clicked, close the custom dialog
-                dialogButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
-                    }
-                });
-
-                dialog.show();
+            public boolean onGroupClick(ExpandableListView parent, View v,
+                                        int groupPosition, long id) {
+                // Toast.makeText(getApplicationContext(),
+                // "Group Clicked " + listDataHeader.get(groupPosition),
+                // Toast.LENGTH_SHORT).show();
+                return false;
             }
         });
 
+        // Listview Group expanded listener
+        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                Toast.makeText(getActivity().getApplicationContext(),
+                        listDataHeader.get(groupPosition) + " Expanded",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        // Listview Group collasped listener
+        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+                Toast.makeText(getActivity().getApplicationContext(),
+                        listDataHeader.get(groupPosition) + " Collapsed",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        // Listview on child click listener
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+                // TODO Auto-generated method stub
+                Toast.makeText(
+                        getActivity().getApplicationContext(),
+                        listDataHeader.get(groupPosition)
+                                + " : "
+                                + listDataChild.get(
+                                listDataHeader.get(groupPosition)).get(
+                                childPosition), Toast.LENGTH_SHORT)
+                        .show();
+                return false;
+            }
+        });
         return myView;
+    }
+
+    /*
+     * Preparing the list data
+     */
+    private void prepareListData() {
+        listDataHeader = new ArrayList<String>();
+        listDataChild = new HashMap<String, List<String>>();
+
+        // Adding child data
+        listDataHeader.add("Address");
+        listDataHeader.add("Call Us!");
+        listDataHeader.add("Email Us!");
+
+        // Adding child data
+        List<String> address = new ArrayList<String>();
+        address.add(getString(R.string.address));
+
+        List<String> phone = new ArrayList<String>();
+        phone.add(getString(R.string.phone));
+
+        List<String> email = new ArrayList<String>();
+        email.add(getString(R.string.email));
+
+        listDataChild.put(listDataHeader.get(0), address); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), phone);
+        listDataChild.put(listDataHeader.get(2), email);
     }
 }

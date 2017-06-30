@@ -115,7 +115,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="78d164b0d2cfd1e81145c30cbd887a6717829935">
+        sha1="dabeabac7d513c4545986f385b6498d41f25d5ef">
         <dex dex="/Users/Yelisetti/Desktop/StudioProjects/SriSai/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_97c84ee0fcfcb68f2a586af25900c95d0a681101/classes.dex" />
     </item>
     <item
@@ -124,7 +124,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="937412c3f39e75eb0181063cb992e51b26b4c3ab">
+        sha1="7f73dd71bcdeab148821aa42ab94f5582afc73c4">
         <dex dex="/Users/Yelisetti/Desktop/StudioProjects/SriSai/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_98d92ffef18493b65b5f3316909cb54080ca1c9b/classes.dex" />
     </item>
     <item

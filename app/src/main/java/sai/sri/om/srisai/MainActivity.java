@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,
                             new ENShejFragment()).commit();
-        }else {
+        } else {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame,
                             new HomeFragment()).commit();
