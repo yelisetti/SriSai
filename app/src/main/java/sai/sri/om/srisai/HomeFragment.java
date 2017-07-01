@@ -61,9 +61,9 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getActivity().getApplicationContext(),
-                        listDataHeader.get(groupPosition) + " Expanded",
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity().getApplicationContext(),
+//                        listDataHeader.get(groupPosition) + " Expanded",
+//                        Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -72,9 +72,9 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getActivity().getApplicationContext(),
-                        listDataHeader.get(groupPosition) + " Collapsed",
-                        Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity().getApplicationContext(),
+//                        listDataHeader.get(groupPosition) + " Collapsed",
+//                        Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -86,14 +86,14 @@ public class HomeFragment extends Fragment {
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
                 // TODO Auto-generated method stub
-                Toast.makeText(
-                        getActivity().getApplicationContext(),
-                        listDataHeader.get(groupPosition)
-                                + " : "
-                                + listDataChild.get(
-                                listDataHeader.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT)
-                        .show();
+//                Toast.makeText(
+//                        getActivity().getApplicationContext(),
+//                        listDataHeader.get(groupPosition)
+//                                + " : "
+//                                + listDataChild.get(
+//                                listDataHeader.get(groupPosition)).get(
+//                                childPosition), Toast.LENGTH_SHORT)
+//                        .show();
                 return false;
             }
         });
@@ -108,22 +108,35 @@ public class HomeFragment extends Fragment {
         listDataChild = new HashMap<String, List<String>>();
 
         // Adding child data
-        listDataHeader.add("Address");
-        listDataHeader.add("Call Us!");
-        listDataHeader.add("Email Us!");
+        listDataHeader.add(getString(R.string.Address));
+        listDataHeader.add(getString(R.string.POBOX_header));
+        listDataHeader.add(getString(R.string.CallUs));
+        listDataHeader.add(getString(R.string.Email));
+        listDataHeader.add(getString(R.string.daily_schedule));
+
+
 
         // Adding child data
         List<String> address = new ArrayList<String>();
-        address.add(getString(R.string.address));
+        address.add(getResources().getString(R.string.address));
+
+        List<String> pobox = new ArrayList<String>();
+        pobox.add(getResources().getString(R.string.pobox));
 
         List<String> phone = new ArrayList<String>();
-        phone.add(getString(R.string.phone));
+        phone.add(getResources().getString(R.string.phone));
 
         List<String> email = new ArrayList<String>();
-        email.add(getString(R.string.email));
+        email.add(getResources().getString(R.string.email));
+
+        List<String> schedule = new ArrayList<String>();
+        schedule.add(String.valueOf(getResources().getText(R.string.schedule)));
 
         listDataChild.put(listDataHeader.get(0), address); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), phone);
-        listDataChild.put(listDataHeader.get(2), email);
+        listDataChild.put(listDataHeader.get(1), pobox);
+        listDataChild.put(listDataHeader.get(2), phone);
+        listDataChild.put(listDataHeader.get(3), email);
+        listDataChild.put(listDataHeader.get(4), schedule);
+
     }
 }
