@@ -13,6 +13,13 @@
         android:textStyle="bold"
         android:textSize="30sp"/>
 
+    <!--<com.google.android.youtube.player.YouTubePlayerView-->
+        <!--android:id="@+id/youtube_view"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_above="@+id/title"-->
+        <!--android:layout_marginBottom="30dp" />-->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

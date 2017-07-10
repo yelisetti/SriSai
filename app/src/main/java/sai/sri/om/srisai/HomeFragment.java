@@ -1,18 +1,22 @@
 package sai.sri.om.srisai;
 
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import sai.sri.om.srisai.adapaters.ExpandableListViewAdapter;
 
 /**
  * Created by Yelisetti on 5/20/17.
@@ -113,9 +117,8 @@ public class HomeFragment extends Fragment {
         listDataHeader.add(getString(R.string.CallUs));
         listDataHeader.add(getString(R.string.Email));
         listDataHeader.add(getString(R.string.daily_schedule));
-
-
-
+        listDataHeader.add("Events/Website");
+        
         // Adding child data
         List<String> address = new ArrayList<String>();
         address.add(getResources().getString(R.string.address));
@@ -132,11 +135,14 @@ public class HomeFragment extends Fragment {
         List<String> schedule = new ArrayList<String>();
         schedule.add(String.valueOf(getResources().getText(R.string.schedule)));
 
+        List<String> events = new ArrayList<String>();
+        events.add("Please visit:\n" + "http://www.saibabamn.org/");
+
         listDataChild.put(listDataHeader.get(0), address); // Header, Child data
         listDataChild.put(listDataHeader.get(1), pobox);
         listDataChild.put(listDataHeader.get(2), phone);
         listDataChild.put(listDataHeader.get(3), email);
         listDataChild.put(listDataHeader.get(4), schedule);
-
+        listDataChild.put(listDataHeader.get(5), events);
     }
 }

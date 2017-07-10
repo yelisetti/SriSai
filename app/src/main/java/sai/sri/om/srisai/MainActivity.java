@@ -1,5 +1,7 @@
 package sai.sri.om.srisai;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,6 +13,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+
+import sai.sri.om.srisai.adapaters.Config;
 import sai.sri.om.srisai.madhyana.ENMadhyanaFragment;
 import sai.sri.om.srisai.dhoop.ENDhoopFragment;
 import sai.sri.om.srisai.kakad.ENKakadFragment;
@@ -18,13 +22,14 @@ import sai.sri.om.srisai.shej.ENShejFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final int RECOVERY_DIALOG_REQUEST = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.content_frame, new HomeFragment()).commit();
@@ -53,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 //        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
@@ -64,10 +69,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://www.saibaba.us/texts/Shri%20Sai%20Satcharitra.pdf")));
+                break;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -136,8 +143,48 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .replace(R.id.content_frame,
                             new HomeFragment()).commit();
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+//    @Override
+//    public void onInitializationFailure(YouTubePlayer.Provider provider,
+//                                        YouTubeInitializationResult errorReason) {
+//        if (errorReason.isUserRecoverableError()) {
+//            errorReason.getErrorDialog(this, RECOVERY_DIALOG_REQUEST).show();
+//        } else {
+//            String errorMessage = String.format(
+//                    getString(R.string.error_player), errorReason.toString());
+//            Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+//        }
+//    }
+//
+//    @Override
+//    public void onInitializationSuccess(YouTubePlayer.Provider provider,
+//                                        YouTubePlayer player, boolean wasRestored) {
+//        if (!wasRestored) {
+//
+//            // loadVideo() will auto play video
+//            // Use cueVideo() method, if you don't want to play it automatically
+//            player.loadVideo(Config.YOUTUBE_VIDEO_CODE);
+//
+//            // Hiding player controls
+//            player.setPlayerStyle(YouTubePlayer.PlayerStyle.CHROMELESS);
+//        }
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == RECOVERY_DIALOG_REQUEST) {
+//            // Retry initialization if user performed a recovery action
+//            getYouTubePlayerProvider().initialize(Config.DEVELOPER_KEY, this);
+//        }
+//    }
+//
+//    private YouTubePlayer.Provider getYouTubePlayerProvider() {
+//        return (YouTubePlayerView) findViewById(R.id.youtube_view);
+//    }
+
 }

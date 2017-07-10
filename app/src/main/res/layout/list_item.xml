@@ -10,6 +10,8 @@
         android:textSize="17dp"
         android:paddingTop="5dp"
         android:textColor="@color/black"
+        android:duplicateParentState="false"
+        android:linksClickable="true"
         android:paddingBottom="15dp"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         />
