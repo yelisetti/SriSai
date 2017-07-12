@@ -89,7 +89,6 @@ public class HomeFragment extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                // TODO Auto-generated method stub
 //                Toast.makeText(
 //                        getActivity().getApplicationContext(),
 //                        listDataHeader.get(groupPosition)
@@ -118,7 +117,7 @@ public class HomeFragment extends Fragment {
         listDataHeader.add(getString(R.string.Email));
         listDataHeader.add(getString(R.string.daily_schedule));
         listDataHeader.add("Events/Website");
-        
+
         // Adding child data
         List<String> address = new ArrayList<String>();
         address.add(getResources().getString(R.string.address));
