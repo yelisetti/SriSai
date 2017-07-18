@@ -9,6 +9,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
@@ -26,6 +27,8 @@ public class HomeFragment extends Fragment {
 
     View myView;
 
+    Button mButton_directions;
+
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
@@ -34,7 +37,16 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         myView = inflater.inflate(R.layout.home, container, false);
+
+        mButton_directions = (Button) myView.findViewById(R.id.btn_directions);
+        mButton_directions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMap(Uri.parse("geo:45.007094,-93.245266"));
+            }
+        });
 
         // get the listview
         expListView = (ExpandableListView) myView.findViewById(R.id.lvExp);
@@ -111,37 +123,20 @@ public class HomeFragment extends Fragment {
         listDataChild = new HashMap<String, List<String>>();
 
         // Adding child data
-        listDataHeader.add(getString(R.string.Address));
-        listDataHeader.add(getString(R.string.POBOX_header));
-        listDataHeader.add(getString(R.string.CallUs));
-        listDataHeader.add(getString(R.string.Email));
         listDataHeader.add(getString(R.string.daily_schedule));
-        listDataHeader.add("Events/Website");
-
-        // Adding child data
-        List<String> address = new ArrayList<String>();
-        address.add(getResources().getString(R.string.address));
-
-        List<String> pobox = new ArrayList<String>();
-        pobox.add(getResources().getString(R.string.pobox));
-
-        List<String> phone = new ArrayList<String>();
-        phone.add(getResources().getString(R.string.phone));
-
-        List<String> email = new ArrayList<String>();
-        email.add(getResources().getString(R.string.email));
 
         List<String> schedule = new ArrayList<String>();
         schedule.add(String.valueOf(getResources().getText(R.string.schedule)));
 
-        List<String> events = new ArrayList<String>();
-        events.add("Please visit:\n" + "http://www.saibabamn.org/");
-
-        listDataChild.put(listDataHeader.get(0), address); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), pobox);
-        listDataChild.put(listDataHeader.get(2), phone);
-        listDataChild.put(listDataHeader.get(3), email);
-        listDataChild.put(listDataHeader.get(4), schedule);
-        listDataChild.put(listDataHeader.get(5), events);
+        listDataChild.put(listDataHeader.get(0), schedule);
     }
+
+    public void showMap(Uri geoLocation) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(geoLocation);
+        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
 }
