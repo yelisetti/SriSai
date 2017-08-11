@@ -2,28 +2,52 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:gravity="center_horizontal">
+    >
 
-    <Button
-        android:id="@+id/english"
+    <LinearLayout
+        android:id="@+id/pcklangstr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick a Language:"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/languages"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/english" />
+        android:layout_below="@id/pcklangstr"
+        >
 
-    <Button
-        android:id="@+id/hindi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/english"
-        android:text="@string/hindi" />
+        <Button
+            android:id="@+id/hindi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/english"
+            android:text="@string/hindi" />
 
-    <Button
-        android:id="@+id/telugu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/hindi"
-        android:text="@string/telugu" />
+        <Button
+            android:id="@+id/telugu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/hindi"
+            android:text="@string/telugu" />
 
+        <Button
+            android:id="@+id/english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/english" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
